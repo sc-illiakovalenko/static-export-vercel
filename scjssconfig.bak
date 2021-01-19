@@ -1,0 +1,9 @@
+{
+  "sitecore": {
+    "instancePath": "C:\\inetpub\\wwwroot\\sc10xp0",
+    "apiKey": "0FBFF61E-267A-43E3-9252-B77E71CEE4BA",
+    "deploySecret": "SmokeyGenerated-bc3e4df9-c2d3-4927-bf94-f72108bf4e0d",
+    "deployUrl": "http://JssNextWeb/sitecore/api/jss/import",
+    "layoutServiceHost": "http://JssNextWeb"
+  }
+}

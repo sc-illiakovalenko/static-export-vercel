@@ -1,0 +1,9 @@
+{
+  "sitecore": {
+    "instancePath": "C:\\inetpub\\wwwroot\\jss1.sc",
+    "apiKey": "{4FEFEBB5-49D7-4E8F-89D5-D40BC1F23BAD}",
+    "deploySecret": "rkir7gew5pnicf0l7uryqd46gs9eu8pq5oe0y0o80hx",
+    "deployUrl": "http://jssnextweb/sitecore/api/jss/import",
+    "layoutServiceHost": "http://jssnextweb"
+  }
+}
