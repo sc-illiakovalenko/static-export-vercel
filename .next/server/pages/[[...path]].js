@@ -482,59 +482,6 @@ module.exports = _typeof;
 
 /***/ }),
 
-/***/ "E4MH":
-/***/ (function(module, exports, __webpack_require__) {
-
-const jssConfig = __webpack_require__("cUJ6");
-
-const packageConfig = __webpack_require__("kiQV").config;
-
-const {
-  JSS_MODE_DISCONNECTED
-} = __webpack_require__("MbQT");
-
-const disconnectedServerUrl = `http://localhost:${process.env.PROXY_PORT || 3042}/`;
-const isDisconnected = process.env.JSS_MODE === JSS_MODE_DISCONNECTED; // A public URL (and uses below) is required for Sitecore Experience Editor support.
-// This is set to http://localhost:3000 by default. See .env for more details.
-
-const publicUrl = "http://localhost:3000";
-const nextConfig = {
-  languages: ['en', 'da-DK'],
-  // Make the same PUBLIC_URL available as an environment variable on the client bundle
-  env: {
-    PUBLIC_URL: publicUrl
-  },
-  webpack: (config, options) => {
-    applyGraphQLCodeGenerationLoaders(config, options);
-    return config;
-  }
-};
-
-const applyGraphQLCodeGenerationLoaders = (config, options) => {
-  config.module.rules.push({
-    test: /\.graphql$/,
-    exclude: /node_modules/,
-    use: [options.defaultLoaders.babel, {
-      loader: 'graphql-let/loader'
-    }]
-  });
-  config.module.rules.push({
-    test: /\.graphqls$/,
-    exclude: /node_modules/,
-    use: ['graphql-let/schema/loader']
-  });
-  config.module.rules.push({
-    test: /\.ya?ml$/,
-    type: 'json',
-    use: 'yaml-loader'
-  });
-  return config;
-};
-
-module.exports = nextConfig;
-
-/***/ }),
-
 /***/ "F5FC":
 /***/ (function(module, exports) {
 
@@ -2499,7 +2446,7 @@ function parseRelativeUrl(url, base) {
 /***/ "kiQV":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"jss-sample-nextjs\",\"description\":\"Application utilizing Sitecore JavaScript Services and Next.js\",\"version\":\"16.0.0-canary.17\",\"private\":true,\"config\":{\"appName\":\"JssNextWeb\",\"rootPlaceholders\":[\"jss-main\"],\"sitecoreDistPath\":\"/dist/JssNextWeb\",\"sitecoreConfigPath\":\"/App_Config/Include/zzz\",\"graphqlEndpointPath\":\"/api/jssnextweb\",\"language\":\"en\"},\"engines\":{\"node\":\">=8.1\",\"npm\":\">=5.6.0\",\"yarn\":\"yarn is not supported, please use npm\"},\"author\":{\"name\":\"Sitecore Corporation\",\"url\":\"https://jss.sitecore.net\"},\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/sitecore/jss.git\"},\"bugs\":{\"url\":\"https://github.com/sitecore/jss/issues\"},\"license\":\"Apache-2.0\",\"dependencies\":{\"@sitecore-jss/sitecore-jss-nextjs\":\"^16.0.0-canary.17\",\"@sitecore-jss/sitecore-jss-tracking\":\"^16.0.0-canary.17\",\"apollo-cache-inmemory\":\"~1.6.3\",\"apollo-client\":\"~2.6.4\",\"apollo-link\":\"~1.2.13\",\"apollo-link-batch-http\":\"~1.2.13\",\"apollo-link-http\":\"~1.5.16\",\"apollo-link-persisted-queries\":\"~0.2.2\",\"bootstrap\":\"^4.3.1\",\"cross-fetch\":\"^3.0.6\",\"graphql\":\"~14.5.7\",\"graphql-tag\":\"^2.11.0\",\"next\":\"^10.0.3\",\"next-localization\":\"^0.10.0\",\"nprogress\":\"~0.2.0\",\"react\":\"^17.0.1\",\"react-apollo\":\"~3.1.1\",\"react-dom\":\"^17.0.1\"},\"devDependencies\":{\"@graphql-codegen/cli\":\"^1.19.1\",\"@graphql-codegen/plugin-helpers\":\"^1.18.1\",\"@graphql-codegen/typescript\":\"^1.17.11\",\"@graphql-codegen/typescript-operations\":\"^1.17.9\",\"@graphql-codegen/typescript-react-apollo\":\"^2.1.1\",\"@graphql-codegen/typescript-resolvers\":\"^1.17.10\",\"@sitecore-jss/sitecore-jss-cli\":\"^16.0.0-canary.17\",\"@sitecore-jss/sitecore-jss-dev-tools\":\"^16.0.0-canary.17\",\"@sitecore-jss/sitecore-jss-manifest\":\"^16.0.0-canary.17\",\"@types/node\":\"^14.6.4\",\"@types/nprogress\":\"^0.2.0\",\"@types/react\":\"^17.0.0\",\"@types/react-dom\":\"^17.0.0\",\"@typescript-eslint/eslint-plugin\":\"^4.7.0\",\"@typescript-eslint/parser\":\"^4.7.0\",\"axios\":\"~0.19.0\",\"chalk\":\"~2.4.2\",\"chokidar\":\"~3.1.1\",\"constant-case\":\"^3.0.4\",\"cross-env\":\"~6.0.3\",\"eslint\":\"^7.13.0\",\"eslint-config-prettier\":\"^6.15.0\",\"eslint-plugin-prettier\":\"^3.1.4\",\"eslint-plugin-react\":\"^7.21.5\",\"eslint-plugin-yaml\":\"^0.2.0\",\"graphql-let\":\"^0.16.2\",\"graphql-tag\":\"~2.10.1\",\"npm-run-all\":\"~4.1.5\",\"prettier\":\"^2.1.2\",\"ts-node\":\"^9.0.0\",\"typescript\":\"^4.0.2\",\"yaml-loader\":\"^0.6.0\"},\"scripts\":{\"jss\":\"jss\",\"lint\":\"eslint ./src/**/*.tsx ./src/**/*.ts ./sitecore/definitions/**/*.ts ./scripts/**/*.ts ./data/**/*.yml\",\"bootstrap\":\"ts-node --project tsconfig.scripts.json scripts/bootstrap.ts && graphql-let\",\"build\":\"next build && next export\",\"graphql:fetch-introspection\":\"ts-node --project tsconfig.scripts.json ./scripts/fetch-graphql-introspection-data.ts\",\"graphql:fetch-fragment-data\":\"ts-node --project tsconfig.scripts.json ./scripts/update-graphql-fragment-data.ts\",\"graphql:update\":\"npm-run-all --serial graphql:fetch-fragment-data graphql:fetch-introspection\",\"next:build\":\"next build\",\"next:dev\":\"cross-env NODE_OPTIONS='--inspect' next dev\",\"next:start\":\"next start\",\"scaffold\":\"ts-node --project tsconfig.scripts.json scripts/scaffold-component.ts\",\"start:connected\":\"npm-run-all --serial bootstrap --parallel next:dev start:watch-components\",\"start\":\"cross-env-shell JSS_MODE=disconnected \\\"npm-run-all --serial bootstrap --parallel next:dev start:disconnected-proxy start:watch-components\\\"\",\"start:disconnected-proxy\":\"ts-node --project tsconfig.scripts.json ./scripts/disconnected-mode-proxy.ts\",\"start:production\":\"npm-run-all --serial bootstrap next:build next:start\",\"start:watch-components\":\"ts-node --project tsconfig.scripts.json scripts/generate-component-factory.ts --watch\"}}");
+module.exports = JSON.parse("{\"a\":{\"appName\":\"JssNextWeb\",\"rootPlaceholders\":[\"jss-main\"],\"sitecoreDistPath\":\"/dist/JssNextWeb\",\"sitecoreConfigPath\":\"/App_Config/Include/zzz\",\"graphqlEndpointPath\":\"/api/jssnextweb\",\"language\":\"en\"}}");
 
 /***/ }),
 
@@ -2949,6 +2896,8 @@ var external_graphql_tag_default = /*#__PURE__*/__webpack_require__.n(external_g
 var react_hooks_ = __webpack_require__("mU8t");
 
 // CONCATENATED MODULE: ./src/components/GraphQL-ConnectedDemo/query.graphql
+/* 3a392a31e26a0932b87d29b16df52e9f4356d572
+ * This file is automatically generated by graphql-let. */
 
 
 const ConnectedDemoQueryDocument = external_graphql_tag_default.a`
@@ -4649,13 +4598,8 @@ const dictionaryService = new sitecore_jss_nextjs_["DictionaryService"]({
 // EXTERNAL MODULE: ./package.json
 var package_0 = __webpack_require__("kiQV");
 
-// EXTERNAL MODULE: ./next.config.js
-var next_config = __webpack_require__("E4MH");
-var next_config_default = /*#__PURE__*/__webpack_require__.n(next_config);
-
 // CONCATENATED MODULE: ./src/lib/page-props-factory.ts
 function page_props_factory_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -4720,11 +4664,11 @@ class page_props_factory_SitecorePagePropsFactory {
   }
 
   detectLocale(context) {
-    const defaultLanguage = package_0["config"].language;
+    const defaultLanguage = package_0["a" /* config */].language;
     if (!context.params || !context.params.path) return defaultLanguage;
     const paths = context.params.path;
     if (paths[0] === '') return defaultLanguage;
-    return next_config_default.a.languages.find(lang => lang === paths[0]) || defaultLanguage;
+    return ['en', 'da-DK'].find(lang => lang === paths[0]) || defaultLanguage;
   }
   /**
    * Create SitecorePageProps for given context (SSR / GetServerSidePropsContext or SSG / GetStaticPropsContext)
@@ -4739,7 +4683,6 @@ class page_props_factory_SitecorePagePropsFactory {
     // i18n disabled when use nextjs Export
 
     const path = extractPath(context.params, !context.locale, locale);
-    console.log('DETECTED LOCALE AND PATH', locale, path);
     let notFound = false; // Fetch layoutData from Layout Service, passing on req/res for SSR
 
     const layoutData = await this.layoutService.fetchLayoutData(path, locale, isServerSidePropsContext(context) ? context.req : undefined, isServerSidePropsContext(context) ? context.res : undefined).catch(error => {
