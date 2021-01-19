@@ -101,8 +101,6 @@ export class SitecorePagePropsFactory {
     // i18n disabled when use nextjs Export
     const path = extractPath(context.params, !context.locale, locale);
 
-    console.log('DETECTED LOCALE AND PATH', locale, path);
-
     let notFound = false;
 
     // Fetch layoutData from Layout Service, passing on req/res for SSR
