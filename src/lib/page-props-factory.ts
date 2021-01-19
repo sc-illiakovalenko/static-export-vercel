@@ -12,7 +12,6 @@ import { componentModule } from 'temp/componentFactory';
 import { layoutService } from 'lib/layout-service';
 import { dictionaryService } from 'lib/dictionary-service';
 import { config as packageConfig } from '../../package.json';
-import nextConfig from '../../next.config';
 
 /**
  * Extract normalized Sitecore item path from query
@@ -83,7 +82,7 @@ export class SitecorePagePropsFactory {
 
     if (paths[0] === '') return defaultLanguage;
 
-    return nextConfig.languages.find((lang: string) => lang === paths[0]) || defaultLanguage;
+    return ['en', 'da-DK'].find((lang: string) => lang === paths[0]) || defaultLanguage;
   }
 
   /**
