@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { DictionaryService } from '@sitecore-jss/sitecore-jss-nextjs';\nimport config from 'temp/config';\nconst dictionaryService = new DictionaryService({\n  apiHost: config.sitecoreApiHost,\n  apiKey: config.sitecoreApiKey,\n  siteName: config.jssAppName\n});\nexport { dictionaryService };","map":null,"metadata":{},"sourceType":"module"}

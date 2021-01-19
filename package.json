@@ -88,7 +88,7 @@
     "jss": "jss",
     "lint": "eslint ./src/**/*.tsx ./src/**/*.ts ./sitecore/definitions/**/*.ts ./scripts/**/*.ts ./data/**/*.yml",
     "bootstrap": "ts-node --project tsconfig.scripts.json scripts/bootstrap.ts && graphql-let",
-    "build": "next build && next export",
+    "build": "next export",
     "graphql:fetch-introspection": "ts-node --project tsconfig.scripts.json ./scripts/fetch-graphql-introspection-data.ts",
     "graphql:fetch-fragment-data": "ts-node --project tsconfig.scripts.json ./scripts/update-graphql-fragment-data.ts",
     "graphql:update": "npm-run-all --serial graphql:fetch-fragment-data graphql:fetch-introspection",

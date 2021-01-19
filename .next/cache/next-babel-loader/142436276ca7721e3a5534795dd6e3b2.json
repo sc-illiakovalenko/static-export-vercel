@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { LayoutService } from '@sitecore-jss/sitecore-jss-nextjs';\nimport config from 'temp/config';\nexport const layoutService = new LayoutService({\n  apiHost: config.sitecoreApiHost,\n  apiKey: config.sitecoreApiKey,\n  siteName: config.jssAppName\n});","map":null,"metadata":{},"sourceType":"module"}
